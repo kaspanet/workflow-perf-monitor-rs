@@ -1,6 +1,6 @@
 [package]
 name = "workflow-perf-monitor"
-version = "0.0.2"
+version = "0.0.3"
 authors = ["zhangli.pear <zhangli.pear@bytedance.com>"]
 edition = "2018"
 
@@ -29,7 +29,7 @@ windows-sys = { version = "0.48.0", features = ["Win32_Foundation", "Win32_Syste
 mach =  "0.3"
 
 [build-dependencies]
-bindgen = "0.59"
+bindgen = "0.72.1"
 cc = "1.0"
 
 [[bench]]
