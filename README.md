@@ -1,19 +1,23 @@
 # perf-monitor-rs
 
-[![github](https://img.shields.io/badge/GitHub-perf_monitor_rs-9b88bb?logo=github)](https://github.com/larksuite/perf-monitor-rs)
+[![github](https://img.shields.io/badge/GitHub-perf_monitor_rs-9b88bb?logo=github)](https://github.com/kaspanet/workflow-perf-monitor-rs)
 [![minimum rustc 1.31.0](https://img.shields.io/badge/Minimum%20rustc-1.31.0-c18170?logo=rust)](https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![docs.rs](https://docs.rs/perf_monitor/badge.svg)](https://docs.rs/perf_monitor)
-[![crates.io](https://img.shields.io/crates/v/perf_monitor.svg)](https://crates.io/crates/perf_monitor)
+[![docs.rs](https://docs.rs/kaspa-workflow-perf-monitor/badge.svg)](https://docs.rs/kaspa-workflow-perf-monitor)
+[![crates.io](https://img.shields.io/crates/v/kaspa-workflow-perf-monitor.svg)](https://crates.io/crates/kaspa-workflow-perf-monitor)
 
 
-This crate is an updated fork of https://github.com/larksuite/perf-monitor-rs used by projects based on the `workflow-rs`.
+This crate is a Kaspa-maintained packaging fork of the original
+[larksuite/perf-monitor-rs](https://github.com/larksuite/perf-monitor-rs).
+It is published as `kaspa-workflow-perf-monitor` only to avoid ownership
+conflicts on crates.io while preserving the `workflow_perf_monitor` Rust crate
+name for downstream users.
 
 
 ```toml
 # Cargo.toml
 [dependencies]
-perf_monitor = "0.2"
+workflow-perf-monitor = { package = "kaspa-workflow-perf-monitor", version = "0.0.3" }
 ```
 
 A toolkit designed to be a foundation for applications to monitor their performance. It is:
@@ -40,10 +44,10 @@ A toolkit designed to be a foundation for applications to monitor their performa
 A simple activity monitor:
 
 ```rust
-    use perf_monitor::cpu::{ThreadStat, ProcessStat, processor_numbers};
-    use perf_monitor::fd::fd_count_cur;
-    use perf_monitor::io::get_process_io_stats;
-    use perf_monitor::mem::get_process_memory_info;
+    use workflow_perf_monitor::cpu::{ThreadStat, ProcessStat, processor_numbers};
+    use workflow_perf_monitor::fd::fd_count_cur;
+    use workflow_perf_monitor::io::get_process_io_stats;
+    use workflow_perf_monitor::mem::get_process_memory_info;
 
     // cpu
     let core_num = processor_numbers().unwrap();
@@ -97,12 +101,12 @@ For example, CPU usage and FD number cost on these devices has following result:
 
 | profiling | Windows | MacOS | iOS | Android | Linux |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| [CPU](https://docs.rs/perf_monitor/cpu/index.html) | ✅ | ✅ |✅ |✅ |✅ |
-| [Memory](https://docs.rs/perf_monitor/mem/index.html) | ✅ |✅ |✅ |✅ |✅ |
-| [FD count](https://docs.rs/perf_monitor/fd/index.html) | ✅ |✅ |❌ |✅ |✅ |
-| [IO](https://docs.rs/perf_monitor/io/index.html) | ✅ |✅ |✅ |✅ |✅ 
+| [CPU](https://docs.rs/kaspa-workflow-perf-monitor/latest/workflow_perf_monitor/cpu/index.html) | ✅ | ✅ |✅ |✅ |✅ |
+| [Memory](https://docs.rs/kaspa-workflow-perf-monitor/latest/workflow_perf_monitor/mem/index.html) | ✅ |✅ |✅ |✅ |✅ |
+| [FD count](https://docs.rs/kaspa-workflow-perf-monitor/latest/workflow_perf_monitor/fd/index.html) | ✅ |✅ |❌ |✅ |✅ |
+| [IO](https://docs.rs/kaspa-workflow-perf-monitor/latest/workflow_perf_monitor/io/index.html) | ✅ |✅ |✅ |✅ |✅ 
 
-See [documents](https://docs.rs/perf_monitor/) of each module for usage and more details.
+See [documents](https://docs.rs/kaspa-workflow-perf-monitor/) of each module for usage and more details.
 
 # Rust Version
 
@@ -138,7 +142,7 @@ However, none of the above crates meet our needs.
 * `procfs` looks good enough now, but only support the Linux platform. In its early stages, when we developed perf_monitor_rs, there was no way to get thread information.
 * `sysinfo` support all platform we need, but we think its interface is not elegant, because an explicit refresh is required before each call, otherwise an old value will be retrieved and you are not able to tell from the returning value. More importantly, it lacks some features like fd, CPU usage. 
 
-If you are building a cross-platform application and facing the same problem, we hope perf_monitor_rs can be your first choice. 
+If you are building a cross-platform application and facing the same problem, we hope this crate can be your first choice.
 
 # License
-perf-monitor is providing under the MIT license. See [LICENSE](./LICENSE).
+perf-monitor is provided under the MIT license. See [LICENSE](./LICENSE).

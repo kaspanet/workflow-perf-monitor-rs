@@ -1,17 +1,19 @@
 [package]
-name = "workflow-perf-monitor"
+name = "kaspa-workflow-perf-monitor"
 version = "0.0.3"
 authors = ["zhangli.pear <zhangli.pear@bytedance.com>"]
 edition = "2018"
 
-license-file = "LICENSE"
+license = "MIT"
 description = "A toolkit designed to be a foundation for applications to monitor their performance."
-repository = "https://github.com/larksuite/perf-monitor-rs"
-documentation = "https://docs.rs/perf_monitor/"
+repository = "https://github.com/kaspanet/workflow-perf-monitor-rs"
+documentation = "https://docs.rs/kaspa-workflow-perf-monitor/"
 
 categories = ["api-bindings", "accessibility", "development-tools"]
 keywords = ["perf", "statistics", "monitor", "performance"]
 
+[lib]
+name = "workflow_perf_monitor"
 
 [features]
 allocation_counter = []
