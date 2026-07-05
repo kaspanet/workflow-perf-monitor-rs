@@ -27,7 +27,7 @@ fn main() {
         println!("----------");
 
         // cpu
-        let _ = (0..1_000).into_iter().sum::<i128>();
+        let _ = (0..1_000).sum::<i128>();
 
         let usage_p = stat_p.cpu().unwrap() * 100f64;
         let usage_t = stat_t.cpu().unwrap() * 100f64;
@@ -63,7 +63,7 @@ fn main() {
 fn build_some_threads() {
     for _ in 0..5 {
         std::thread::spawn(|| loop {
-            let _ = (0..9_000).into_iter().sum::<i128>();
+            let _ = (0..9_000).sum::<i128>();
         });
     }
 }

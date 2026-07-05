@@ -15,6 +15,7 @@ pub struct ThreadId(pub u32);
 
 impl ThreadId {
     #[inline]
+    #[allow(deprecated)]
     pub fn current() -> Self {
         ThreadId(unsafe { mach_thread_self() })
     }
@@ -31,7 +32,7 @@ pub fn get_thread_basic_info(ThreadId(tid): ThreadId) -> Result<thread_basic_inf
             &mut thread_info_cnt,
         )
     };
-    if ret != KERN_SUCCESS as i32 {
+    if ret != KERN_SUCCESS {
         return Err(Error::from_raw_os_error(ret));
     }
     Ok(unsafe { thread_basic_info.assume_init() })
