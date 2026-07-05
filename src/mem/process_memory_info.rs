@@ -136,10 +136,7 @@ fn get_process_memory_info_impl() -> Result<ProcessMemoryInfo> {
     };
     if kern_ret != KERN_SUCCESS {
         // see https://docs.rs/mach/0.2.3/mach/kern_return/index.html for more details
-        return Err(Error::new(
-            std::io::ErrorKind::Other,
-            format!("DARWIN_KERN_RET_CODE:{}", kern_ret),
-        ));
+        return Err(Error::other(format!("DARWIN_KERN_RET_CODE:{}", kern_ret)));
     }
     let task_vm_info = unsafe { task_vm_info.assume_init() };
     Ok(ProcessMemoryInfo {

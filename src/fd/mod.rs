@@ -12,8 +12,8 @@
 //! - Linux & android: [/proc/{pid}/fd](https://man7.org/linux/man-pages/man5/proc.5.html)
 //! - MacOS: [/dev/fd](https://www.informit.com/articles/article.aspx?p=99706&seqNum=15)
 //! - iOS Unfortunately there is no api to retrieve the fd count of the process for iOS.
-//! Following links contains a available method, but it's complicated and
-//! inefficient. <https://stackoverflow.com/questions/4083608/on-ios-iphone-too-many-open-files-need-to-list-open-files-like-lsof>
+//!   Following links contains a available method, but it's complicated and
+//!   inefficient. <https://stackoverflow.com/questions/4083608/on-ios-iphone-too-many-open-files-need-to-list-open-files-like-lsof>
 //!
 //! ## Other Process
 //!
@@ -55,5 +55,5 @@ use darwin_private as platform;
 /// return the fd count of current process
 #[inline]
 pub fn fd_count_cur() -> std::io::Result<usize> {
-    platform::fd_count_cur().map(|count| count as usize)
+    platform::fd_count_cur()
 }
